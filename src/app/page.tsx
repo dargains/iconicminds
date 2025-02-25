@@ -1,62 +1,79 @@
 "use client";
 
 import { useState } from "react";
+import ConfirmUserButton from "./components/Confirm";
 
-export default function EmailForm() {
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+export default function UserForm() {
+  const [name, setName] = useState("teste");
+  const [email, setEmail] = useState("teste@email.com");
+  const [phone, setPhone] = useState("123456789");
+  const [company, setCompany] = useState("Iconic Minds");
   const [status, setStatus] = useState("");
 
-  const sendEmail = async (e: React.FormEvent) => {
+  // Function to save user
+  const saveUser = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("Sending...");
+    setStatus("Saving...");
 
     try {
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ to: email, subject, message }),
+        body: JSON.stringify({ name, email, phone, company }),
       });
 
       const result = await response.json();
       if (response.ok) {
-        setStatus("Email sent successfully!");
+        setStatus("User saved successfully!");
+        setName("");
+        setEmail("");
+        setPhone("");
+        setCompany("");
       } else {
         setStatus(`Error: ${result.error}`);
       }
-    } catch (error) {
-      setStatus("Failed to send email.");
+    } catch {
+      setStatus("Failed to save user.");
     }
   };
 
   return (
     <div>
-      <h2>Send an Email</h2>
-      <form onSubmit={sendEmail}>
+      <h2>Save User</h2>
+      <form onSubmit={saveUser}>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
         <input
           type="email"
-          placeholder="Recipient Email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="text"
-          placeholder="Subject"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
+          placeholder="Phone (Optional)"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
           required
         />
-        <textarea
-          placeholder="Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-        />
-        <button type="submit">Send</button>
+        <button type="submit">Save</button>
       </form>
+
       <p>{status}</p>
+      <ConfirmUserButton userId={1} confirm />
+      <ConfirmUserButton userId={1} confirm={false} />
     </div>
   );
 }
