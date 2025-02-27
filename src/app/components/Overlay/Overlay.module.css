@@ -16,10 +16,32 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  background-color: white;
+  background-color: var(--tertiary);
   border-radius: 10px;
-  padding: 20px;
+  padding: 32px 24px;
   width: 360px;
+  box-shadow: 4px 4px 30px rgba(36, 13, 13, 1);
+}
+.box form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: stretch;
+  margin-top: 24px;
+  width: 100%;
+}
+.box button {
+  width: 100%;
+  margin-top: 40px;
+}
+.box input {
+  font-family: var(--font-lufga);
+  border: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 80%;
 }
 .disclaimer {
   font-size: 12px;
@@ -28,4 +50,11 @@
 .status {
   font-family: var(--font-lufga-bold);
   color: #003765;
+}
+.ellipse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
