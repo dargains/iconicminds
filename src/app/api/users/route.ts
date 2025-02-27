@@ -25,8 +25,17 @@ export async function POST(req: Request) {
         VALUES (@name, @email, @phone, @company)
       `);
 
+    const userId = result.recordset[0].id;
+
+    // Send confirmation email
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/send-email`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, userId, company }),
+    });
+
     return NextResponse.json(
-      { success: "User added successfully", userId: result.recordset[0].id },
+      { success: "User added and email sent successfully", userId },
       { status: 200 }
     );
   } catch (error) {
