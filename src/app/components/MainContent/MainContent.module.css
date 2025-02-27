@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  gap: 48px;
+  flex: 1;
+}
+.contentBox {
+  padding: 16px 32px;
+  font-family: var(--font-lufga);
+  color: #fff;
+  border: 1px solid var(--tertiary);
+  border-radius: 16px;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 22px;
+  line-height: 22px;
+}
+.contentBox p:first-of-type,
+.contentBox p:last-of-type {
+  font-family: var(--font-lufga-bold);
+}
+
+.ctaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.ctaBlock p {
+  font-family: var(--font-lufga-bold);
+  color: #fff;
+  width: 50%;
+  font-size: 37px;
+  line-height: 37px;
+}
+.ctaBlock span {
+  color: var(--primary);
+}
+.buttonContainer {
+  display: flex;
+  gap: 32px;
+}
+.knowMore {
+  display: flex;
+  gap: 48px;
+}
+.knowMoreText {
+  font-family: var(--font-lufga);
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.knowMoreText strong {
+  font-family: var(--font-lufga-bold);
+}
+.knowMoreQuote {
+  font-family: var(--font-lufga-bold);
+  color: var(--primary);
+  font-size: 48px;
+  line-height: 48px;
+}

@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
-import Lufga_Bold from "next/font/local";
+import localfont from "next/font/local";
 import "./globals.css";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
   subsets: ["latin"],
 });
-const lufga = Lufga_Bold({
-  variable: "--font-lufga",
+const lufgaBold = localfont({
+  variable: "--font-lufga-bold",
   src: "../fonts/LufgaBold.woff",
+});
+const lufgaRegular = localfont({
+  variable: "--font-lufga",
+  src: "../fonts/LufgaRegular.woff",
 });
 
 export const metadata: Metadata = {
@@ -24,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lufga.variable} ${workSans.variable}`}>
+      <body
+        className={`${lufgaBold.variable} ${lufgaRegular.variable} ${workSans.variable}`}
+      >
         {children}
       </body>
     </html>

@@ -1,0 +1,16 @@
+.container {
+  background-color: var(--secondary);
+  min-height: 100vh;
+}
+.quote {
+  font-family: var(--font-lufga);
+  color: #fff;
+  font-size: 24px;
+  padding: 24px 52px;
+  background-color: #ffffff6e;
+  border-radius: 16px;
+  border: 1px solid var(--tertiary);
+}
+.quote strong {
+  font-family: var(--font-lufga-bold);
+}
