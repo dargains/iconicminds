@@ -55,9 +55,6 @@ center,
 dl,
 dt,
 dd,
-ol,
-ul,
-li,
 fieldset,
 form,
 label,
@@ -124,11 +121,7 @@ section {
 body {
   line-height: 1;
 }
-menu,
-ol,
-ul {
-  list-style: none;
-}
+
 blockquote,
 q {
   quotes: none;
@@ -148,6 +141,5 @@ button {
   background-color: transparent;
 }
 a {
-  text-decoration: none;
   color: inherit;
 }

@@ -6,8 +6,8 @@ const Footer = () => {
     <footer className={styles.footer}>
       <p>© Iconic Minds 2024</p>
       <div className={styles.links}>
-        <a href="y">Termos e Condições</a>
-        <a href="x">Política de Privacidade</a>
+        <a href="/terms">Termos e Condições</a>
+        <a href="/privacy">Política de Privacidade</a>
       </div>
     </footer>
   );

@@ -15,12 +15,13 @@ const Overlay = ({
   const [email, setEmail] = useState("andre.dargains@gmail.com");
   const [phone, setPhone] = useState("123456789");
   const [company, setCompany] = useState("Iconic Minds");
-  const [status, setStatus] = useState("done");
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
 
   // Function to save user
   const saveUser = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("A guardar...");
+    setMessage("A guardar...");
 
     try {
       const response = await fetch("/api/users", {
@@ -31,26 +32,24 @@ const Overlay = ({
 
       const result = await response.json();
       if (response.ok) {
-        setStatus("Registo feito com sucesso!");
+        setStatus("done");
         setName("");
         setEmail("");
         setPhone("");
         setCompany("");
       } else {
-        setStatus(`Error: ${result.error}`);
+        setMessage(result.error);
       }
     } catch {
-      setStatus("Falha no registo.");
+      setMessage("Falha no registo.");
     }
   };
 
   const checkToken = (e: React.FormEvent) => {
     e.preventDefault();
+    setMessage("");
     console.log("check token");
     setisTokenValid(true);
-    setStatus(
-      "Registo efetuado com sucesso. Em breve, irá receber um e-mail com toda a informação."
-    );
   };
   return (
     <div className={styles.overlay}>
@@ -109,6 +108,7 @@ const Overlay = ({
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
+            {message && <p className={styles.message}>{message}</p>}
             <Button
               label="Registar"
               type="primary"
@@ -116,8 +116,8 @@ const Overlay = ({
               disabled={status === "A guardar..."}
             />
             <p className={styles.disclaimer}>
-              Ao clicar “Registar” aceita os nossos termos e política de
-              privacidade.
+              Ao clicar “Registar” aceita os nossos <a href="/terms">termos</a>{" "}
+              e <a href="/privacy">política de privacidade</a>.
             </p>
           </form>
         ) : (

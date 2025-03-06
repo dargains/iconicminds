@@ -40,6 +40,20 @@ export async function POST(req: Request) {
     );
   } catch (error) {
     console.error("Database error:", error);
-    return NextResponse.json({ error: "Failed to save user" }, { status: 500 });
+    return NextResponse.json(
+      { error: checkDuplicateError(error) },
+      { status: 500 }
+    );
   }
+}
+
+function checkDuplicateError(error: unknown): string {
+  if (typeof error === "object" && error !== null && "message" in error) {
+    const message = String((error as { message: unknown }).message);
+    if (message.toLowerCase().includes("duplicate")) {
+      return "E-mail já cadastrado";
+    }
+    return message;
+  }
+  return "Erro de servidor, por favor tente novamente mais tarde.";
 }
