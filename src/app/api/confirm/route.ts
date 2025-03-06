@@ -1,14 +1,12 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getDbConnection } from "@/lib/db";
 import sql from "mssql";
 
-export async function PATCH(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(req: NextRequest) {
   try {
-    const { confirmed, declined } = await req.json();
-    const userId = parseInt(params.id, 10);
+    // Parse request body and route param
+    const { confirmed, declined, userId: id } = await req.json();
+    const userId = parseInt(id, 10);
 
     if (isNaN(userId)) {
       return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
@@ -24,6 +22,7 @@ export async function PATCH(
     const pool = await getDbConnection();
     const request = pool.request().input("id", sql.Int, userId);
 
+    // Conditionally update confirmed or declined
     if (confirmed !== undefined) {
       request.input("confirmed", sql.Bit, confirmed);
       await request.query(

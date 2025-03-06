@@ -17,10 +17,10 @@ export default function ConfirmUserButton({
     const params = confirm ? { confirmed: true } : { declined: true };
 
     try {
-      const response = await fetch(`/api/users/${userId}`, {
+      const response = await fetch(`/api/confirm`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(params),
+        body: JSON.stringify({ ...params, userId }),
       });
 
       const result = await response.json();
@@ -29,7 +29,7 @@ export default function ConfirmUserButton({
       } else {
         setStatus(`Error: ${result.error}`);
       }
-    } catch (error) {
+    } catch {
       setStatus("Failed to update user.");
     }
   };
