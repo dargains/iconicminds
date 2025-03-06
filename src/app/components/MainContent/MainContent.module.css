@@ -18,7 +18,7 @@
   flex-direction: column;
   gap: 8px;
   font-size: 22px;
-  line-height: 22px;
+  line-height: 26px;
   grid-area: contentBox;
 }
 .contentBox p:first-of-type,
@@ -27,9 +27,20 @@
 }
 .headline {
   grid-area: headline;
+  max-width: 493px;
+}
+.innerHeadline {
+  width: 100%;
+  height: auto;
 }
 .image {
   grid-area: image;
+  max-width: 573px;
+}
+.innerImage {
+  width: 100%;
+  min-width: 450px;
+  height: auto;
 }
 
 .ctaBlock {
@@ -41,8 +52,8 @@
 .ctaBlock p {
   font-family: var(--font-lufga-bold);
   color: #fff;
-  font-size: 37px;
-  line-height: 37px;
+  font-size: 36px;
+  line-height: 40px;
 }
 .ctaBlock span {
   color: var(--primary);
@@ -60,6 +71,7 @@
   font-family: var(--font-lufga);
   color: #fff;
   font-size: 22px;
+  line-height: 25px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -71,5 +83,46 @@
   font-family: var(--font-lufga-bold);
   color: var(--primary);
   font-size: 48px;
-  line-height: 48px;
+  line-height: 52px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-areas:
+      "image"
+      "headline"
+      "contentBox"
+      "ctaBlock";
+  }
+  .headline {
+    margin-top: -180px;
+    z-index: 1;
+  }
+  .innerImage,
+  .innerHeadline {
+    min-width: auto;
+    width: 100%;
+    max-width: none;
+  }
+  .contentBox {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+  }
+  .ctaBlock p {
+    font-size: 24px;
+    line-height: 24px;
+  }
+  .knowMore {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+  .knowMoreText {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .knowMoreQuote {
+    font-size: 24px;
+    line-height: 28px;
+  }
 }

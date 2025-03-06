@@ -24,7 +24,7 @@ export default function Page() {
         <ConfirmUserButton userId={1} confirm={false} /> */}
         <div className={styles.quote}>
           “O mais importante na vida é que o mais importante seja o mais
-          importante.” - <strong>Stephen Covey</strong>
+          importante.” <strong>Stephen Covey</strong>
         </div>
         <Footer />
       </div>

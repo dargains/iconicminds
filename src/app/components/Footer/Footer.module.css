@@ -13,3 +13,10 @@
 .links a {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column-reverse;
+    gap: 24px;
+  }
+}

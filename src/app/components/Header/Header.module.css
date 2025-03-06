@@ -8,3 +8,21 @@
   display: flex;
   gap: 16px;
 }
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column-reverse;
+    gap: 24px;
+  }
+  .socials {
+    align-self: flex-end;
+  }
+  .icon {
+    width: 15px;
+    height: 15px;
+  }
+}

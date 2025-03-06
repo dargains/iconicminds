@@ -19,7 +19,13 @@ const MainContent = ({
     <main>
       <div className={styles.container}>
         <figure className={styles.headline}>
-          <Image src="/headline.svg" alt="Headline" width={493} height={295} />
+          <Image
+            src="/headline.svg"
+            alt="Headline"
+            width={493}
+            height={295}
+            className={styles.innerHeadline}
+          />
         </figure>
         <div className={styles.contentBox}>
           <p>Qual é o seu valor por pessoa?</p>
@@ -47,7 +53,13 @@ const MainContent = ({
           </div>
         </div>
         <figure className={styles.image}>
-          <Image src="/Victor.png" alt="Victor" width={573} height={727} />
+          <Image
+            src="/Victor.png"
+            alt="Victor"
+            width={573}
+            height={727}
+            className={styles.innerImage}
+          />
         </figure>
       </div>
       {isKnowMoreOpen ? (
