@@ -4,14 +4,16 @@ import Image from "next/image";
 import styles from "./MainContent.module.css";
 import Button from "../Button/Button";
 
-const MainContent = () => {
+const MainContent = ({
+  handleOpenOverlay,
+}: {
+  handleOpenOverlay: () => void;
+}) => {
   const [isKnowMoreOpen, setIsKnowMoreOpen] = useState(false);
 
   const toggleKnowMore = () => {
     setIsKnowMoreOpen(!isKnowMoreOpen);
   };
-
-  const openOverlay = () => {};
 
   return (
     <main>
@@ -32,7 +34,7 @@ const MainContent = () => {
               <Button
                 label="Registo"
                 type="primary"
-                handleClick={openOverlay}
+                handleClick={handleOpenOverlay}
               />
               <Button
                 label="Saber Mais"

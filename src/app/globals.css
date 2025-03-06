@@ -2,6 +2,7 @@
   --primary: #fce020;
   --secondary: #003765;
   --tertiary: #f6f6f6;
+  --textColor: #333;
 }
 * {
   font-family: var(--font-lufga);

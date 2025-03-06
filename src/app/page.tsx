@@ -9,19 +9,25 @@ import Overlay from "./components/Overlay/Overlay";
 
 import styles from "./page.module.css";
 
-export default function UserForm() {
+export default function Page() {
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const handleToggleOverlay = () => {
+    setIsOverlayOpen(!isOverlayOpen);
+  };
   return (
     <div className={styles.container}>
-      <Overlay />
-      <Header />
-      <MainContent />
-      <ConfirmUserButton userId={1} confirm />
-      <ConfirmUserButton userId={1} confirm={false} />
-      <div className={styles.quote}>
-        “O mais importante na vida é que o mais importante seja o mais
-        importante.” - <strong>Stephen Covey</strong>
+      <div className={styles.wrapper}>
+        {isOverlayOpen && <Overlay handleToggleOverlay={handleToggleOverlay} />}
+        <Header />
+        <MainContent handleOpenOverlay={handleToggleOverlay} />
+        <ConfirmUserButton userId={1} confirm />
+        <ConfirmUserButton userId={1} confirm={false} />
+        <div className={styles.quote}>
+          “O mais importante na vida é que o mais importante seja o mais
+          importante.” - <strong>Stephen Covey</strong>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

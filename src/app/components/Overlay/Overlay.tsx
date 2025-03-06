@@ -3,14 +3,19 @@ import Image from "next/image";
 import styles from "./Overlay.module.css";
 import Button from "../Button/Button";
 
-const Overlay = () => {
+const Overlay = ({
+  handleToggleOverlay,
+}: {
+  handleToggleOverlay: () => void;
+}) => {
   const [token, settoken] = useState("");
   const [isTokenValid, setisTokenValid] = useState(false);
   const [name, setName] = useState("teste");
+  const [lastName, setLastName] = useState("teste");
   const [email, setEmail] = useState("andre.dargains@gmail.com");
   const [phone, setPhone] = useState("123456789");
   const [company, setCompany] = useState("Iconic Minds");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("done");
 
   // Function to save user
   const saveUser = async (e: React.FormEvent) => {
@@ -43,10 +48,16 @@ const Overlay = () => {
     e.preventDefault();
     console.log("check token");
     setisTokenValid(true);
+    setStatus(
+      "Registo efetuado com sucesso. Em breve, irá receber um e-mail com toda a informação."
+    );
   };
   return (
     <div className={styles.overlay}>
       <div className={styles.box}>
+        <button className={styles.closeButton} onClick={handleToggleOverlay}>
+          X
+        </button>
         <Image
           src="/logo black.svg"
           alt="Iconic Minds"
@@ -60,13 +71,29 @@ const Overlay = () => {
           width={340}
           height={340}
         />
-        {isTokenValid ? (
+        {status === "done" ? (
+          <>
+            <Image src="/success.svg" alt="sucesso" width={64} height={64} />
+            <p className={styles.successText}>
+              Registo efetuado com sucesso.
+              <br />
+              Em breve, irá receber um e-mail com toda a informação.
+            </p>
+          </>
+        ) : isTokenValid ? (
           <form onSubmit={saveUser}>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Nome"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Apelido"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
               required
             />
             <input
@@ -78,16 +105,9 @@ const Overlay = () => {
             />
             <input
               type="text"
-              placeholder="Phone (Optional)"
+              placeholder="Telefone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="company"
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
-              required
             />
             <Button
               label="Registar"
@@ -111,8 +131,6 @@ const Overlay = () => {
             <Button label="Avançar" type="primary" role="submit" />
           </form>
         )}
-
-        <p className={styles.status}>{status}</p>
       </div>
     </div>
   );
