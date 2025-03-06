@@ -20,8 +20,8 @@ export default function Page() {
         {isOverlayOpen && <Overlay handleToggleOverlay={handleToggleOverlay} />}
         <Header />
         <MainContent handleOpenOverlay={handleToggleOverlay} />
-        <ConfirmUserButton userId={1} confirm />
-        <ConfirmUserButton userId={1} confirm={false} />
+        {/* <ConfirmUserButton userId={1} confirm />
+        <ConfirmUserButton userId={1} confirm={false} /> */}
         <div className={styles.quote}>
           “O mais importante na vida é que o mais importante seja o mais
           importante.” - <strong>Stephen Covey</strong>

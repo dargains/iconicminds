@@ -15,6 +15,7 @@
   background-color: #ffffff6e;
   border-radius: 16px;
   border: 1px solid var(--tertiary);
+  margin: 40px 0;
 }
 .quote strong {
   font-family: var(--font-lufga-bold);

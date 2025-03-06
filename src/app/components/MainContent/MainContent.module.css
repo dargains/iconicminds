@@ -1,7 +1,11 @@
 .container {
-  display: flex;
+  display: grid;
   gap: 48px;
   flex: 1;
+  grid-template-areas:
+    "headline image"
+    "contentBox image"
+    "ctaBlock image";
 }
 .contentBox {
   padding: 16px 32px;
@@ -15,21 +19,28 @@
   gap: 8px;
   font-size: 22px;
   line-height: 22px;
+  grid-area: contentBox;
 }
 .contentBox p:first-of-type,
 .contentBox p:last-of-type {
   font-family: var(--font-lufga-bold);
+}
+.headline {
+  grid-area: headline;
+}
+.image {
+  grid-area: image;
 }
 
 .ctaBlock {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  grid-area: ctaBlock;
 }
 .ctaBlock p {
   font-family: var(--font-lufga-bold);
   color: #fff;
-  width: 50%;
   font-size: 37px;
   line-height: 37px;
 }
@@ -43,6 +54,7 @@
 .knowMore {
   display: flex;
   gap: 48px;
+  margin-top: 40px;
 }
 .knowMoreText {
   font-family: var(--font-lufga);

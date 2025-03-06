@@ -18,35 +18,37 @@ const MainContent = ({
   return (
     <main>
       <div className={styles.container}>
-        <div>
+        <figure className={styles.headline}>
           <Image src="/headline.svg" alt="Headline" width={493} height={295} />
-          <div className={styles.contentBox}>
-            <p>Qual é o seu valor por pessoa?</p>
-            <p>V=(C+E)*A</p>
-            <p>Valor: (Conhecimento + Experiência) x Atitude</p>
-            <p>A Atitude multiplica!</p>
-          </div>
-          <div className={styles.ctaBlock}>
-            <p>
-              <span>22 Abril 2025</span> 19:30 Teatro Politeama Lisboa
-            </p>
-            <div className={styles.buttonContainer}>
-              <Button
-                label="Registo"
-                type="primary"
-                handleClick={handleOpenOverlay}
-              />
-              <Button
-                label="Saber Mais"
-                type="secondary"
-                handleClick={toggleKnowMore}
-              />
-            </div>
+        </figure>
+        <div className={styles.contentBox}>
+          <p>Qual é o seu valor por pessoa?</p>
+          <p>V=(C+E)*A</p>
+          <p>Valor: (Conhecimento + Experiência) x Atitude</p>
+          <p>A Atitude multiplica!</p>
+        </div>
+        <div className={styles.ctaBlock}>
+          <p>
+            <span>22 Abril 2025</span> 19:30
+            <br /> Teatro Politeama
+            <br /> Lisboa
+          </p>
+          <div className={styles.buttonContainer}>
+            <Button
+              label="Registo"
+              type="primary"
+              handleClick={handleOpenOverlay}
+            />
+            <Button
+              label="Saber Mais"
+              type="secondary"
+              handleClick={toggleKnowMore}
+            />
           </div>
         </div>
-        <div>
+        <figure className={styles.image}>
           <Image src="/Victor.png" alt="Victor" width={573} height={727} />
-        </div>
+        </figure>
       </div>
       {isKnowMoreOpen ? (
         <div className={styles.knowMore}>
