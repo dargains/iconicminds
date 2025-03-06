@@ -1,0 +1,36 @@
+.container {
+  background-color: var(--secondary);
+  min-height: 100vh;
+  font-family: var(--font-lufga);
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+}
+.wrapper {
+  padding: 40px 16px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+.logo {
+  margin: 0 auto;
+  display: block;
+}
+.heading {
+  font-family: var(--font-lufga-bold);
+  color: var(--primary);
+  text-align: center;
+  margin: 32px 0 24px;
+  font-size: 36px;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+.container h2 {
+  font-family: var(--font-lufga-bold);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.container footer {
+  text-align: center;
+  margin-top: 36px;
+  font-size: 14px;
+}
